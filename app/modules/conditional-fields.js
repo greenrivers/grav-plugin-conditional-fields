@@ -28,17 +28,19 @@ export default function conditionalFields() {
                     sibling = sibling.children(':first');
                 }
 
-                if (sibling.hasClass(`option-${value}`)) {
-                    if (isBlueprint()) {
-                        sibling.parent().removeClass('hidden');
+                if(sibling.hasClass('conditional')) {
+                    if (sibling.hasClass(`option-${value}`)) {
+                        if (isBlueprint()) {
+                            sibling.parent().removeClass('hidden');
+                        } else {
+                            sibling.removeClass('hidden');
+                        }
                     } else {
-                        sibling.removeClass('hidden');
-                    }
-                } else {
-                    if (isBlueprint()) {
-                        sibling.parent().addClass('hidden');
-                    } else {
-                        sibling.addClass('hidden');
+                        if (isBlueprint()) {
+                            sibling.parent().addClass('hidden');
+                        } else {
+                            sibling.addClass('hidden');
+                        }
                     }
                 }
             });
