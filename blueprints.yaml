@@ -1,0 +1,33 @@
+name: Conditional fields
+slug: conditional-fields
+type: plugin
+version: 1.0.0
+description: Conditional fields
+icon: toggle-on
+author:
+  name: Greenrivers
+  email: support@greenrivers.pl
+  url: http://greenrivers.pl
+homepage: https://github.com/greenrivers/grav-plugin-conditional-fields
+keywords: conditional, fields, plugin, blueprints, admin
+bugs: https://github.com/greenrivers/grav-plugin-conditional-fields/issues
+docs: https://github.com/greenrivers/grav-plugin-conditional-fields/blob/develop/README.md
+license: MIT
+
+dependencies:
+  - { name: grav, version: '>=1.6.0' }
+  - { name: form, version: '>=3.0.0' }
+
+form:
+  validation: loose
+  fields:
+    enabled:
+      type: toggle
+      label: PLUGIN_ADMIN.PLUGIN_STATUS
+      highlight: 1
+      default: 0
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
