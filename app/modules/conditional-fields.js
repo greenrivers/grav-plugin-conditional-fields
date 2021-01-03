@@ -6,9 +6,9 @@
 import $ from 'jquery';
 
 export default function conditionalFields() {
-    const isBlueprint = () => {
+    const isPluginPage = () => {
         const {pathname} = location;
-        return pathname.startsWith('/admin/plugins') || pathname.startsWith('/admin/themes');
+        return pathname.startsWith('/admin/plugins');
     };
 
     const toggleDisplayField = item => {
@@ -16,7 +16,7 @@ export default function conditionalFields() {
         const value = item.val();
         const checked = item.prop('checked');
 
-        if (isBlueprint()) {
+        if (isPluginPage()) {
             formField = formField.parent();
         }
 
@@ -24,19 +24,19 @@ export default function conditionalFields() {
             $(formField).siblings().each((i, sibling) => {
                 sibling = $(sibling);
 
-                if (isBlueprint()) {
+                if (isPluginPage()) {
                     sibling = sibling.children(':first');
                 }
 
                 if(sibling.hasClass('conditional')) {
                     if (sibling.hasClass(`option-${value}`)) {
-                        if (isBlueprint()) {
+                        if (isPluginPage()) {
                             sibling.parent().removeClass('hidden');
                         } else {
                             sibling.removeClass('hidden');
                         }
                     } else {
-                        if (isBlueprint()) {
+                        if (isPluginPage()) {
                             sibling.parent().addClass('hidden');
                         } else {
                             sibling.addClass('hidden');
