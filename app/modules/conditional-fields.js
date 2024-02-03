@@ -8,7 +8,9 @@ import $ from 'jquery';
 export default function conditionalFields() {
     const isPluginPage = () => {
         const {pathname} = location;
-        return pathname.startsWith('/admin/plugins');
+        const {base_url_relative = '/admin'} = window.GravAdmin.config;
+
+        return pathname.startsWith(`${base_url_relative}/plugins`);
     };
 
     const toggleDisplayField = item => {
